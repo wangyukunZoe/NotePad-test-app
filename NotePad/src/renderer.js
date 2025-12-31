@@ -25,3 +25,4 @@ btn2.addEventListener('click', async () => {
     console.log(len)
     info.innerHTML = `File Size: ${len}`
 })
+//Happy 2026! 考研一定要上岸！
