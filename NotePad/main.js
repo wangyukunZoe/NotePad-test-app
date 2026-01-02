@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
+// const remote = require('@electron/remote/main')
 const path = require("node:path");
 
 // 写入文件 Node.js fs文件写入模块
@@ -11,11 +12,12 @@ function createWindow() {
     webPreferences: {
       // __dirname 生成绝对路径
       preload: path.join(__dirname, "preload.js"), //__dirname -> 当前目录的位置
-    },
-  });
+
+    }
+  })
 
   // 一般主进程为相对路径这里可以用绝对
-  win.loadFile("src/index.html");
+  win.loadFile("index.html");
   win.webContents.openDevTools();
 }
 
@@ -26,7 +28,7 @@ function createAnotherWindow(parent) {
     height: 300,
     parent,
   });
-  win.loadFile("src/second.html");
+  win.loadFile("second.html");
 }
 
 //创建一个回调函数更新窗体title
@@ -46,14 +48,22 @@ async function handleWriteFile(event, content) {
   return stats.size;
 }
 
-app.on("ready", () => {
+app.on('ready', () => {
   ipcMain.on("set-title", handleSetTitle);
   //write-read file
   ipcMain.handle("write-file", handleWriteFile);
 
   // const parent = createWindow()
   // createAnotherWindow(parent)
-  createWindow();
+
+  let counter = 1;
+  const win = createWindow()
+  win.webContents.send('update-counter', counter)
+  setInterval(() => {
+    counter += 3
+    win.webContents.send('update-counter', counter)
+  }, 3000)  //3s 发送一次
+
 });
 
 //
