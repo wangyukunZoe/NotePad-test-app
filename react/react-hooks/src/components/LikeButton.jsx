@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const LikeButton = () => {
     //const [like, setLike] = useState(0);    //初始 state 的值 []这里是数组的结构
@@ -7,6 +7,18 @@ const LikeButton = () => {
 
     const [like, setLike] = useState(0);
     const [on, setOn] = useState(true);
+
+    //调用 useEffect
+    //不需要清楚的 Effect
+    useEffect(
+        
+        () => {
+            //使浏览器的标题显示相应的内容 控制 BOM
+            document.title = `点击了Have Clicked ${like}次`;
+
+        }
+    )
+
     // const [obj, setObj] = useState({ like: 0, on: true })
     return (
         <>
