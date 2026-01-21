@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import useMousePosition from '../hooks/useMousePosition'
 
 const LikeButton = () => {
+
+    const position = useMousePosition();
+
     //const [like, setLike] = useState(0);    //初始 state 的值 []这里是数组的结构
     // useState 返回一个数组 [当前的 state，更新的state的函数]两项 
     // setlike 是更新变量的一种方法
@@ -22,6 +26,7 @@ const LikeButton = () => {
     // const [obj, setObj] = useState({ like: 0, on: true })
     return (
         <>
+            <p>{position.y}</p>
             <button onClick={() => { setLike(like + 1) }}>
                 {like} 👍
             </button>
