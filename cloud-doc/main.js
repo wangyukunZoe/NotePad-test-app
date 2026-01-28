@@ -15,3 +15,10 @@ app.on('ready', () => {
     mainWindow.loadURL(urlLocation);
 
 })
+
+// unix 手动清理端口命令
+// lsof -i:3000
+// kill -9 [pid]
+// concurrently package //命令行同步
+// electron
+// npm install electron --save-dev
