@@ -24,3 +24,6 @@ function App() {
 }
 
 export default App;
+
+// npm i --save @fortawesome/fontawesome-svg-core
+// 安装字体文件

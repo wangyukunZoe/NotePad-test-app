@@ -22,3 +22,5 @@ app.on('ready', () => {
 // concurrently package //命令行同步
 // electron
 // npm install electron --save-dev
+// npm i --save @fortawesome/fontawesome-svg-core
+// 安装字体文件
